@@ -7,7 +7,8 @@ import static br.com.guilhermealvessilveira.wifi.wireless802n.manager.WindowsPro
 
 public class WifiManager {
 
-    private static final long TIMEOUT_SLEEP = 2000L;
+    private static final long TIMEOUT_SLEEP = 5000L;
+    private static final long TIMEOUT_INTERVAL = 2000L;
     private static final String DISCONNECTED_MSG = "Ping request could not find host www.google.com";
     private static final String REQUEST_TIMEOUT = "Request timed out";
     private static final Logger LOG = Logger.getLogger(WifiManager.class.getName());
@@ -33,6 +34,7 @@ public class WifiManager {
                     || line.contains(REQUEST_TIMEOUT)) {
                     disconnect();
                     connect();
+                    ThreadUtils.sleep(TIMEOUT_INTERVAL);
                 }
             });
 
