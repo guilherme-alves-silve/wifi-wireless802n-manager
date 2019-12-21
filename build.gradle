@@ -1,0 +1,44 @@
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
+    }
+
+}
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group 'br.com.guilhermealvessilveira'
+version '1.0-SNAPSHOT'
+
+mainClassName = 'br.com.guilhermealvessilveira.wifi.wireless802n.manager.Main'
+sourceCompatibility = 1.11
+
+jar {
+    manifest {
+        attributes('Main-Class': 'br.com.guilhermealvessilveira.wifi.wireless802n.manager.Main')
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+shadowJar {
+    baseName = 'wifi-wireless802n-manager'
+}

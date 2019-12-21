@@ -1,0 +1,1 @@
+java -jar build/libs/wife-wireless802n-manager-1.0-SNAPSHOT.jar "YOUR_SSID_HERE"
