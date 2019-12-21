@@ -9,6 +9,7 @@ public class WifiManager {
 
     private static final long TIMEOUT_SLEEP = 2000L;
     private static final String DISCONNECTED_MSG = "Ping request could not find host www.google.com";
+    private static final String REQUEST_TIMEOUT = "Request timed out";
     private static final Logger LOG = Logger.getLogger(WifiManager.class.getName());
 
     private final String ssid;
@@ -28,7 +29,8 @@ public class WifiManager {
 
             manager.execute(line -> {
                 LOG.info(line);
-                if (line.contains(DISCONNECTED_MSG)) {
+                if (line.contains(DISCONNECTED_MSG)
+                    || line.contains(REQUEST_TIMEOUT)) {
                     disconnect();
                     connect();
                 }
